@@ -1,0 +1,705 @@
+// --------------------------------------------------
+// Position dict
+// --------------------------------------------------
+position_dict = {
+  t: 'top',
+  r: 'right',
+  b: 'bottom',
+  l: 'left'
+}
+
+
+// --------------------------------------------------
+// Color dict
+// --------------------------------------------------
+color_dict = {
+  red: #ef403a,
+  purple: #cb90fd,
+  green: #28d17b,
+  blue: #88b5ff,
+  yellow:#fec75c
+}
+
+// --------------------------------------------------
+// Space number list
+// --------------------------------------------------
+space_number_list = 0 1 2 3 4 5 6 8 10 12 16 20 24 32 40 48 56 64
+
+
+// --------------------------------------------------
+// Size list
+// --------------------------------------------------
+space_scale_list = xs sm md lg xl 2xl 3xl 4xl 5xl 6xl
+
+
+// --------------------------------------------------
+// Aliases
+// --------------------------------------------------
+// imp = !important
+
+
+// --------------------------------------------------
+// Color
+// --------------------------------------------------
+.c
+  for $name, $color in color_dict
+    &-bg-{$name}
+      background-color: $color
+
+
+// --------------------------------------------------
+// Border
+// --------------------------------------------------
+.b
+  &-pill
+    border: 1px solid
+  &-circle
+    border: 1px solid
+  // for $num in 0..5
+  //   border: ($num)px solid #eee
+  //   for $name, $position in position_dict
+
+
+  // for d in position_dict
+  //   if d == 'a'
+  //     for num in 0..5
+  //       &-{num}
+  //         border: (num)px solid #eee
+  //   else
+  //     &-{d}-{num}
+  //       border-{position_dict[d]}: (num)px solid #eee
+
+
+// --------------------------------------------------
+// Radius
+// --------------------------------------------------
+.r
+  for $num in 0..5
+    for d in position_dict
+      &-{$num}
+        border-radius: ($num)px
+
+
+// --------------------------------------------------
+// Font size
+// --------------------------------------------------
+font_size(val=1)
+  font-size: (val)rem
+
++prefix-classes('f-s-')
+  .xs
+    font_size(0.75)
+
+  .sm
+    font_size(0.875)
+
+  .md
+    font_size()
+
+  .lg
+    font_size(1.125)
+
+  .xl
+    font_size(1.25)
+
+  .2xl
+    font_size(1.5)
+
+  .3xl
+    font_size(1.875)
+
+  .4xl
+    font_size(2.25)
+
+  .5xl
+    font_size(3)
+
+  .6xl
+    font_size(4)
+
+
+// --------------------------------------------------
+// Font weight
+// --------------------------------------------------
++prefix-classes('f-w-')
+  for $num in 1..9
+    .{$num * 100}
+      font-weight: $num * 100
+
+  .hairline
+    @extend .f-w-100
+
+  .thin
+    @extend .f-w-200
+
+  .light
+    @extend .f-w-300
+
+  .normal
+    @extend .f-w-400
+
+  .medium
+    @extend .f-w-500
+
+  .semibold
+    @extend .f-w-600
+
+  .bold
+    @extend .f-w-700
+
+  .extrabold
+    @extend .f-w-800
+
+  .black
+    @extend .f-w-900
+
+
+// --------------------------------------------------
+// Font style
+// --------------------------------------------------
+.italic
+  font-style: italic
+
+.not-italic
+  font-style: normal
+
+
+// --------------------------------------------------
+// Letter spacing
+// --------------------------------------------------
+
+
+// --------------------------------------------------
+// Line height
+// --------------------------------------------------
+line_height(val)
+  line-height: val
+
++prefix-classes('leading-')
+  .none
+    line_height 1
+
+  .tight
+    line_height 1.25
+
+  .snug
+    line_height 1.375
+
+  .normal
+    line_height 1.5
+
+  .relaxed
+    line_height 1.625
+
+  .loose
+    line_height 2
+
+
+// --------------------------------------------------
+// Text align
+// --------------------------------------------------
++prefix-classes('text-')
+  .center
+    text-align: center
+
+  .left
+    text-align: left
+
+  .right
+    text-align: right
+
+  .justify
+    text-align: justify
+
+
+// --------------------------------------------------
+// Text decoration
+// --------------------------------------------------
++prefix-classes('text-')
+  .underline
+    text-decoration: underline
+
+  .line-through
+    text-decoration: line-through
+
+  .no-underline
+    text-decoration: none
+
+// .ellipsis
+
+// .uppercase
+
+
+// --------------------------------------------------
+// Margin
+// --------------------------------------------------
++prefix-classes('m-')
+  for $num in space_number_list
+    .{$num}
+      margin: 0.25rem * $num
+
+  .px
+    margin: 1px
+
+  .auto
+    margin: auto
+
+  for $num in slice(space_number_list, 1)
+    .n-{$num}
+      margin: -0.25rem * $num
+
+  .n-px
+    margin: -1px
+
+  for $num in space_number_list
+    .y-{$num}
+      margin-top: 0.25rem * $num
+      margin-bottom: 0.25rem * $num
+
+  .y-auto
+    margin-top: auto
+    margin-bottom: auto
+
+  .y-px
+    margin-top: 1px
+    margin-bottom: 1px
+
+  for $num in slice(space_number_list, 1)
+    .y-n-{$num}
+      margin-top: -0.25rem * $num
+      margin-bottom: -0.25rem * $num
+
+  .y-n-px
+    margin-top: -1px
+    margin-bottom: -1px
+
+  for $num in space_number_list
+    .x-{$num}
+      margin-left: 0.25rem * $num
+      margin-right: 0.25rem * $num
+
+  .x-auto
+    margin-left: auto
+    margin-right: auto
+
+  .x-px
+    margin-left: 1px
+    margin-right: 1px
+
+  for $num in slice(space_number_list, 1)
+    .x-n-{$num}
+      margin-left: -0.25rem * $num
+      margin-right: -0.25rem * $num
+
+  .x-n-px
+    margin-left: -1px
+    margin-right: -1px
+
+  for $name, $position in position_dict
+    for $num in space_number_list
+      .{$name}-{$num}
+        margin-{$position}: 0.25rem * $num
+
+    .{$name}-auto
+      margin-{$position}: auto
+
+    .{$name}-px
+      margin-{$position}: 1px
+
+  for $name, $position in position_dict
+    for $num in slice(space_number_list, 1)
+      .{$name}-{$num}
+        margin-{$position}: -0.25rem * $num
+
+    .{$name}-n-px
+      margin-{$position}: -1px
+
+
+// --------------------------------------------------
+// Padding
+// --------------------------------------------------
++prefix-classes('p-')
+  for $num in space_number_list
+    .{$num}
+      padding: 0.25rem * $num
+
+  .px
+    padding: 1px
+
+  for $num in space_number_list
+    .y-{$num}
+      padding-top: 0.25rem * $num
+      padding-bottom: 0.25rem * $num
+
+  .y-px
+    padding-top: 1px
+    padding-bottom: 1px
+
+  for $num in space_number_list
+    .x-{$num}
+      padding-left: 0.25rem * $num
+      padding-right: 0.25rem * $num
+
+  .x-px
+    padding-left: 1px
+    padding-right: 1px
+
+  for $name, $position in position_dict
+    for $num in space_number_list
+      .{$name}-{$num}
+        padding-{$position}: 0.25rem * $num
+
+    .{$name}-px
+      padding-{$position}: 1px
+
+
+
+// --------------------------------------------------
+// Width
+// --------------------------------------------------
++prefix-classes('w-')
+  for $num in space_number_list
+    .{$num}
+      width: 0.25rem * $num
+
+  .auto
+    width: auto
+
+  .full
+    width: 100%
+
+  .screen
+    width: 100vw
+
+  .px
+    width: 1px
+
+  // 设置百分比
+  for $num1 in 2 3 4 5 6 12
+    for $num2 in 1...$num1
+      .{$num2}-{$num1}
+        width: percentage($num2/$num1)
+
+
+// --------------------------------------------------
+// Min width
+// --------------------------------------------------
++prefix-classes('min-w-')
+  .0
+    min-width: 0
+
+  .full
+    min-width: 100%
+
+
+// --------------------------------------------------
+// Max width
+// --------------------------------------------------
+max_w_xs($num=0)
+  max-width: 28rem + $num
+
++prefix-classes('max-w-')
+  .xs
+    max_w_xs(-8)
+
+  .sm
+    max_w_xs(-4)
+
+  .md
+    max_w_xs()
+
+  .lg
+    max_w_xs(4)
+
+  .xl
+    max_w_xs(8)
+
+  .2xl
+    max_w_xs(14)
+
+  .3xl
+    max_w_xs(20)
+
+  .4xl
+    max_w_xs(28)
+
+  .5xl
+    max_w_xs(36)
+
+  .6xl
+    max_w_xs(44)
+
+  .full
+    max-width: 100%
+
+
+// --------------------------------------------------
+// Height
+// --------------------------------------------------
++prefix-classes('h-')
+  for $num in space_number_list
+    .{$num}
+      height: 0.25rem * $num
+
+  .px
+    height: 1px
+
+  .auto
+    height: auto
+
+  .full
+    height: 100%
+
+  .screen
+    height: 100vh
+
+
+// --------------------------------------------------
+// Min height
+// --------------------------------------------------
+min_height(val)
+  min-height: val
+
++prefix-classes('min-h-')
+  .0
+    min_height 0
+
+  .full
+    min_height 100%
+
+  .screen
+    min_height 100vh
+
+
+// --------------------------------------------------
+// Max height
+// --------------------------------------------------
+max_height(val)
+  max-height: val
+
++prefix-classes('max-h-')
+  .full
+    max_height 100%
+
+  .screen
+    max_height 100vh
+
+
+// --------------------------------------------------
+// Display
+// --------------------------------------------------
+.block
+  display: block
+
+.inline
+  display: inline
+
+.inline-block
+  display: inline-block
+
+.flex
+  display: flex
+
+.inline-flex
+  display: inline-flex
+
+.table
+  display: table
+  &-row
+    display: table-row
+  &-cell
+    display: table-cell
+
+.hidden
+  display: hidden
+
+
+// --------------------------------------------------
+// Position
+// --------------------------------------------------
+.static
+  position: static
+
+.fixed
+  position: fixed
+
+.absolute
+  position: absolute
+
+.relative
+  position: relative
+
+.sticky
+  position: sticky
+
+
+// --------------------------------------------------
+// Flex Direction
+// --------------------------------------------------
++prefix-classes('flex-')
+  // Direction
+  .row
+    flex-direction: row
+
+  .row-reverse
+    flex-direction: row-reverse
+
+  .col
+    flex-direction: column
+
+  .col-reverse
+    flex-direction: column-reverse
+
+
+// --------------------------------------------------
+// Flex wrap
+// --------------------------------------------------
++prefix-classes('flex-')
+  .no-wrap
+    flex-wrap: nowrap
+
+  .wrap
+    flex-wrap: wrap
+
+  .wrap-reverse
+    flex-wrap: wrap-reverse
+
+
+// --------------------------------------------------
+// Flex align items
+// --------------------------------------------------
++prefix-classes('items-')
+  .stretch
+    align-items: stretch
+
+  .start
+    align-items: flex-start
+
+  .center
+    align-items: center
+
+  .end
+    align-items: flex-end
+
+  .baseline
+    align-items: baseline
+
+
+// --------------------------------------------------
+// Flex align content
+// --------------------------------------------------
++prefix-classes('content-')
+  .start
+    align-content: flex-start
+
+  .center
+    align-content: center
+
+  .end
+    align-content: flex-end
+
+  .between
+    align-content: space-between
+
+  .around
+    align-content: space-around
+
+
+// --------------------------------------------------
+// Flex align self
+// --------------------------------------------------
++prefix-classes('self-')
+  .auto
+    align-self: auto
+
+  .start
+    align-self: flex-start
+
+  .center
+    align-self: center
+
+  .end
+    align-self: flex-end
+
+  .stretch
+    align-self: stretch
+
+
+// --------------------------------------------------
+// Flex justify content
+// --------------------------------------------------
++prefix-classes('justify-')
+  .start
+    justify-content: flex-start
+
+  .center
+    justify-content: center
+
+  .end
+    justify-content: flex-end
+
+  .between
+    justify-content: space-between
+
+  .around
+    justify-content: space-around
+
+
+// --------------------------------------------------
+// Flex
+// --------------------------------------------------
++prefix-classes('flex-')
+ .initial
+   flex: 0 1 auto
+
+  .1
+    flex: 1 1 0%
+
+  .auto
+    flex: 1 1 auto
+
+  .none
+    flex: none
+
+
+// --------------------------------------------------
+// Flex grow, shrink
+// --------------------------------------------------
++prefix-class('flex-')
+  .grow
+    flex-grow: 1
+
+  .grow-0
+    flex-grow: 0
+
+  .shrink
+    flex-shrink: 1
+
+  .shrink-0
+    flex-shrink: 0
+
+
+// --------------------------------------------------
+// Flex order
+// --------------------------------------------------
++prefix-clas('order-')
+  .first
+    order: -9999
+
+  .last
+    order: 9999
+
+  .none
+    order: 0
+
+  for $num in 1..9
+    .{$num}
+        order: $num
+
+
+// --------------------------------------------------
+// Hide content overflowed
+// --------------------------------------------------
+.overflow-hidden {
+    overflow: hidden;
+}
