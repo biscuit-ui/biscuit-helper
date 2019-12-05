@@ -4,8 +4,29 @@
   "description": "This is a css helper for biscuit-ui.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "run-s clean stylus postcss",
+    "build:min": "run-s clean stylus compress",
+    "dev": "run-s clean watch",
+    "postcss": "postcss ./dist -u autoprefixer -d ./dist --no-map",
+    "compress": "postcss ./dist -u autoprefixer cssnano -d ./dist --no-map",
+    "stylus": "stylus src/helper.styl -o ./dist",
+    "watch": "stylus src/helper.styl -o ./dist -w",
+    "clean": "rimraf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanowen/biscuit-helper.git"
   },
   "author": "ang.hz",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.7.3",
+    "cssnano": "^4.1.10",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^7.0.23",
+    "postcss-cli": "^6.1.3",
+    "postscss": "^1.6.0",
+    "rimraf": "^3.0.0",
+    "stylus": "^0.54.7"
+  }
 }
