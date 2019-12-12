@@ -1,0 +1,84 @@
+// --------------------------------------------------
+// Margin
+// --------------------------------------------------
++prefix-classes('m-')
+
+  for $num in space_number_list
+    .{$num}
+      margin: 0.25rem * $num
+
+  .px
+    margin: 1px
+
+  .auto
+    margin: auto
+
+  for $num in slice(space_number_list, 1)
+    .n-{$num}
+      margin: -0.25rem * $num
+
+  .n-px
+    margin: -1px
+
+  for $num in space_number_list
+    .y-{$num}
+      margin-top: 0.25rem * $num
+      margin-bottom: 0.25rem * $num
+
+  .y-auto
+    margin-top: auto
+    margin-bottom: auto
+
+  .y-px
+    margin-top: 1px
+    margin-bottom: 1px
+
+  for $num in slice(space_number_list, 1)
+    .y-n-{$num}
+      margin-top: -0.25rem * $num
+      margin-bottom: -0.25rem * $num
+
+  .y-n-px
+    margin-top: -1px
+    margin-bottom: -1px
+
+  for $num in space_number_list
+    .x-{$num}
+      margin-left: 0.25rem * $num
+      margin-right: 0.25rem * $num
+
+  .x-auto
+    margin-left: auto
+    margin-right: auto
+
+  .x-px
+    margin-left: 1px
+    margin-right: 1px
+
+  for $num in slice(space_number_list, 1)
+    .x-n-{$num}
+      margin-left: -0.25rem * $num
+      margin-right: -0.25rem * $num
+
+  .x-n-px
+    margin-left: -1px
+    margin-right: -1px
+
+  for $name, $position in position_dict
+    for $num in space_number_list
+      .{$name}-{$num}
+        margin-{$position}: 0.25rem * $num
+
+    .{$name}-auto
+      margin-{$position}: auto
+
+    .{$name}-px
+      margin-{$position}: 1px
+
+  for $name, $position in position_dict
+    for $num in slice(space_number_list, 1)
+      .{$name}-n-{$num}
+        margin-{$position}: -0.25rem * $num
+
+    .{$name}-n-px
+      margin-{$position}: -1px

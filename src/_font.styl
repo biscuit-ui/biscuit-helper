@@ -1,0 +1,82 @@
+// --------------------------------------------------
+// Font size
+// --------------------------------------------------
+font_size(val=1)
+  font-size: (val)rem
+
++prefix-classes('f-s-')
+  .xs
+    font_size(0.75)
+
+  .sm
+    font_size(0.875)
+
+  .md
+    font_size()
+
+  .lg
+    font_size(1.125)
+
+  .xl
+    font_size(1.25)
+
+  .2xl
+    font_size(1.5)
+
+  .3xl
+    font_size(1.875)
+
+  .4xl
+    font_size(2.25)
+
+  .5xl
+    font_size(3)
+
+  .6xl
+    font_size(4)
+
+
+// --------------------------------------------------
+// Font style
+// --------------------------------------------------
+.italic
+  font-style: italic
+
+.not-italic
+  font-style: normal
+
+
+// --------------------------------------------------
+// Font weight
+// --------------------------------------------------
++prefix-classes('f-w-')
+  for $num in 1..9
+    .{$num * 100}
+      font-weight: $num * 100
+
+  .hairline
+    @extend .f-w-100
+
+  .thin
+    @extend .f-w-200
+
+  .light
+    @extend .f-w-300
+
+  .normal
+    @extend .f-w-400
+
+  .medium
+    @extend .f-w-500
+
+  .semibold
+    @extend .f-w-600
+
+  .bold
+    @extend .f-w-700
+
+  .extrabold
+    @extend .f-w-800
+
+  .black
+    @extend .f-w-900

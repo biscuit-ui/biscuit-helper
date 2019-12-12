@@ -1,0 +1,77 @@
+// --------------------------------------------------
+// Width
+// --------------------------------------------------
++prefix-classes('w-')
+  for $num in space_number_list
+    .{$num}
+      width: 0.25rem * $num
+
+  .auto
+    width: auto
+
+  .full
+    width: 100%
+
+  .screen
+    width: 100vw
+
+  .px
+    width: 1px
+
+  // 设置百分比
+  for $num1 in 2 3 4 5 6 12
+    for $num2 in 1...$num1
+      .{$num2}-{$num1}
+        width: percentage($num2/$num1)
+
+
+// --------------------------------------------------
+// Min width
+// --------------------------------------------------
++prefix-classes('min-w-')
+  .0
+    min-width: 0
+
+  .full
+    min-width: 100%
+
+
+// --------------------------------------------------
+// Max width
+// --------------------------------------------------
+max_w_xs($num=0)
+  max-width: 28rem + $num
+
++prefix-classes('max-w-')
+  .xs
+    max_w_xs(-8)
+
+  .sm
+    max_w_xs(-4)
+
+  .md
+    max_w_xs()
+
+  .lg
+    max_w_xs(4)
+
+  .xl
+    max_w_xs(8)
+
+  .2xl
+    max_w_xs(14)
+
+  .3xl
+    max_w_xs(20)
+
+  .4xl
+    max_w_xs(28)
+
+  .5xl
+    max_w_xs(36)
+
+  .6xl
+    max_w_xs(44)
+
+  .full
+    max-width: 100%

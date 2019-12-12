@@ -1,0 +1,23 @@
+// --------------------------------------------------
+// Border
+// --------------------------------------------------
++prefix-classes('b-')
+  for $num in 1..5
+    .{$num}
+      border: ($num)px solid gray_list[3]
+
+    for $name, $position in position_dict
+      .{$name}-{$num}
+        border-{$position}: ($num)px solid gray_list[3]
+
+
+// --------------------------------------------------
+// Border with color
+// --------------------------------------------------
++prefix-classes('b-')
+  for $name in 'gray' 'red' 'orange' 'yellow' 'green' 'teal' 'blue' 'indigo' 'purple' 'pink'
+    $n = 1
+    for $color in lookup($name + '_list')
+      .{$name}-{$n * 100}
+        border-color: $color
+      $n += 1

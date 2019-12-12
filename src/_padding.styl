@@ -1,0 +1,37 @@
+// --------------------------------------------------
+// Padding
+// --------------------------------------------------
++prefix-classes('p-')
+  
+  for $num in space_number_list
+    .{$num}
+      padding: 0.25rem * $num
+
+  .px
+    padding: 1px
+
+  for $num in space_number_list
+    .y-{$num}
+      padding-top: 0.25rem * $num
+      padding-bottom: 0.25rem * $num
+
+  .y-px
+    padding-top: 1px
+    padding-bottom: 1px
+
+  for $num in space_number_list
+    .x-{$num}
+      padding-left: 0.25rem * $num
+      padding-right: 0.25rem * $num
+
+  .x-px
+    padding-left: 1px
+    padding-right: 1px
+
+  for $name, $position in position_dict
+    for $num in space_number_list
+      .{$name}-{$num}
+        padding-{$position}: 0.25rem * $num
+
+    .{$name}-px
+      padding-{$position}: 1px

@@ -1,0 +1,31 @@
+// --------------------------------------------------
+// Color text
+// --------------------------------------------------
++prefix-classes('c-')
+  .black
+    color: #000000
+
+  .white
+    color: #FFFFFF
+
+  for $name in 'gray' 'red' 'orange' 'yellow' 'green' 'teal' 'blue' 'indigo' 'purple' 'pink'
+    $num = 1
+    for $c in lookup($name + '_list')
+      .{$name}-{$num * 100}
+        color: $c
+      $num += 1
+
+
++prefix-classes('c-bg-')
+  .black
+    background-color: #000000
+
+  .white
+    background-color: #FFFFFF
+
+  for $name in 'gray' 'red' 'orange' 'yellow' 'green' 'teal' 'blue' 'indigo' 'purple' 'pink'
+    $num = 1
+    for $c in lookup($name + '_list')
+      .{$name}-{$num * 100}
+        background-color: $c
+      $num += 1

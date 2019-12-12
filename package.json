@@ -7,8 +7,8 @@
     "build": "run-s clean stylus postcss",
     "build:min": "run-s clean stylus compress",
     "dev": "run-s clean watch",
-    "postcss": "postcss ./dist -u autoprefixer -d ./dist --no-map",
-    "compress": "postcss ./dist -u autoprefixer cssnano -d ./dist --no-map",
+    "postcss": "postcss ./dist/helper.css -u autoprefixer -o ./dist/helper.css --no-map",
+    "compress": "postcss ./dist/helper.css -u autoprefixer cssnano -o ./dist/helper.min.css --no-map",
     "stylus": "stylus src/helper.styl -o ./dist",
     "watch": "stylus src/helper.styl -o ./dist -w",
     "clean": "rimraf dist"
