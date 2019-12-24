@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/alanowen/biscuit-helper.git"
   },
-  "author": "ang.hz",
+  "author": "owz",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^9.7.3",
